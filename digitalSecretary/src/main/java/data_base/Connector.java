@@ -3,10 +3,8 @@ package data_base;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.Properties;
 
 public class Connector {
-    static Properties property = new Properties();
     public static final Connection connection;
 
     static
@@ -19,7 +17,7 @@ public class Connector {
 
         try
         {
-            connection = DriverManager.getConnection(property.getProperty("db.URL"), property.getProperty("db.login"), property.getProperty("db.password"));
+            connection = DriverManager.getConnection(ConfProperties.getProperty("db.URL"), ConfProperties.getProperty("db.login"), ConfProperties.getProperty("db.password"));
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
