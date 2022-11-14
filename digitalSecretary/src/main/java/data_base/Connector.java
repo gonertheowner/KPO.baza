@@ -22,4 +22,9 @@ public class Connector {
             throw new RuntimeException(e);
         }
     }
+
+    public static void selectAll() throws SQLException {
+        var statement = connection.prepareStatement("SELECT * FROM users");
+        statement.execute();
+    }
 }

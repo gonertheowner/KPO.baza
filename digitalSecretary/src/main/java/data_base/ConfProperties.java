@@ -9,7 +9,7 @@ public class ConfProperties {
 
     static {
         try {
-            fileInputStream = new FileInputStream("digitalSecretary\\digitalSecretary\\src\\main\\resources\\properties.properties");
+            fileInputStream = new FileInputStream("src\\main\\resources\\properties.properties");
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException e) {
