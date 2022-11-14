@@ -23,8 +23,15 @@ public class DataManager {
         }
     }
 
-    public static void selectAll() throws SQLException {
-        var statement = connection.prepareStatement("SELECT * FROM users");
-        statement.execute();
+    public static void selectAll(String tableName) throws SQLException {
+        if (tableName == null) {
+            // trow some exception
+        }
+        var statement = connection.prepareStatement("SELECT * FROM " + tableName);
+        if (statement.execute()) {
+            System.out.println("Success!");
+        } else {
+            // throw some exception
+        }
     }
 }
