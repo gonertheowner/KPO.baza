@@ -41,28 +41,23 @@ public class DataManager {
     public static void addUser(User user) throws SQLException {
         try
         {
-            PreparedStatement preparedStatement
-                    = connection.prepareStatement("Insert Into users VALUES (?,?,?)");
-            preparedStatement.setInt(1, user.getId());
-            preparedStatement.setString(2, user.getLogin());
-            preparedStatement.setString(3, user.getPassword());
+            PreparedStatement preparedStatement = connection.prepareStatement("Insert Into users (login, password) VALUES (?,?)");
+            preparedStatement.setString(1, user.getLogin());
+            preparedStatement.setString(2, user.getPassword());
             preparedStatement.executeUpdate();
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }
-    public static void deleteUser(int index) throws SQLException
-    {
+    public static void deleteUser(int index) throws SQLException {
         try
         {
-            PreparedStatement preparedStatement
-                    = connection.prepareStatement("DELETE FROM users WHERE ID=?");
+            PreparedStatement preparedStatement = connection.prepareStatement("DELETE FROM users WHERE ID=?");
             preparedStatement.setInt(1, index);
             preparedStatement.executeUpdate();
         }
         catch (SQLException e) {
             throw new RuntimeException(e);
         }
-
     }
 }
