@@ -60,4 +60,15 @@ public class DataManager {
             throw new RuntimeException(e);
         }
     }
+    public static void updateUser (int index,User user) {
+        try {
+            PreparedStatement preparedStatement=connection.prepareStatement("UPDATE users SET login=?, password=? WHERE ID=?");
+            preparedStatement.setString(1,user.getLogin());
+            preparedStatement.setString(2,user.getPassword());
+            preparedStatement.setInt(3,index);
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
