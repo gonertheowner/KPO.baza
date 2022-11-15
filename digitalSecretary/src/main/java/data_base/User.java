@@ -1,3 +1,4 @@
+package data_base;
 public class User {
     private int id;
     private String login;
