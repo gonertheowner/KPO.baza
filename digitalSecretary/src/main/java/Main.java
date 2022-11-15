@@ -7,6 +7,7 @@ public class Main {
         //DataManager.deleteUser(2);
         //DataManager.selectAll("users");
         //DataManager.addUser(new User("asdasd","asdasd"));
-        DataManager.updateUser(1,new User("WFWEF","1234"));
+       // DataManager.updateUser(1,new User("WFWEF","1234"));
+        DataManager.searchUser(new User("WFWEF","1234"));
     }
 }

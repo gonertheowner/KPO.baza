@@ -1,9 +1,6 @@
 package data_base;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 
 public class DataManager {
@@ -70,5 +67,25 @@ public class DataManager {
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
+    }
+    public static boolean searchUser(User user)
+    {
+        boolean flag=false;
+       try {
+           PreparedStatement preparedStatement = connection.prepareStatement("SELECT login FROM users WHERE EXISTS(SELECT login FROM users where login=?)");
+           preparedStatement.setString(1,user.getLogin());
+           var resultSet=preparedStatement.executeQuery();
+           if (resultSet.next()) {
+               flag=true;
+               System.out.println("есть такая строка");
+           }
+           else {
+               System.out.println("нет такой строки");
+           }
+
+       } catch (SQLException e) {
+           throw new RuntimeException(e);
+       }
+        return flag;
     }
 }
