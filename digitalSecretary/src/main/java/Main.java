@@ -4,10 +4,10 @@ import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
-        //DataManager.deleteUser(2);
-        //DataManager.selectAll("users");
-        //DataManager.addUser(new User("asdasd","asdasd"));
-       // DataManager.updateUser(1,new User("WFWEF","1234"));
-        DataManager.searchUser(new User("WFWEF","1234"));
+        //User.deleteUser(2);
+        //User.selectAll("users");
+        //User.addUser(new User("asdasd","asdasd"));
+       // User.updateUser(1,new User("WFWEF","1234"));
+        User.searchUser(new User("WFWEF","1234"));
     }
 }
