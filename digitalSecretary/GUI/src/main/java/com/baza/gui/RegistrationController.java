@@ -15,4 +15,7 @@ public class RegistrationController {
     @FXML
     private Button RegisterButton;
 
+    @FXML
+    private Button BackToAuthorizationButton;
+
 }
