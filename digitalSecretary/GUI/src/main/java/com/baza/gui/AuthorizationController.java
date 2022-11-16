@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -23,6 +24,9 @@ public class AuthorizationController {
 
     @FXML
     private TextField SignInField;
+
+    @FXML
+    private Label ErrorText;
 
     @FXML
     void initialize(){
@@ -46,20 +50,27 @@ public class AuthorizationController {
         });
 
         SignInButton.setOnAction(event -> {
-            FXMLLoader loader = new FXMLLoader();
-            loader.setLocation(getClass().getResource("app.fxml"));
+            String resultOfCheck = "Asuccess";
+            //Максим, добавь сюда функцию которая принимает login и password и возвращает "success" или ошибку
+            //возможные ошибки: какое-то поле пустое, нет такого логина, неверный пароль
+            if (resultOfCheck == "success") {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(getClass().getResource("app.fxml"));
 
-            try {
-                loader.load();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
+                try {
+                    loader.load();
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+
+                Parent root = loader.getRoot();
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                SignInButton.getScene().getWindow().hide();
+                stage.showAndWait();
+            } else {
+                ErrorText.setText(resultOfCheck);
             }
-
-            Parent root = loader.getRoot();
-            Stage stage = new Stage();
-            stage.setScene(new Scene(root));
-            SignInButton.getScene().getWindow().hide();
-            stage.showAndWait();
         });
     }
 
